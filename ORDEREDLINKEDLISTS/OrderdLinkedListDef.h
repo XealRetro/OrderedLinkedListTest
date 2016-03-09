@@ -4,7 +4,7 @@
 #endif
 
 template <class Type>
-class orderedLinkedList : public linkedListType<Type>
+class orderedLinkedList:public linkedListType<Type>
 {
 public:
 	bool search(const Type& searchItem) const;
