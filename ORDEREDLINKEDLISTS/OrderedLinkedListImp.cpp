@@ -37,7 +37,7 @@ void orderedLinkedList<Type>::insert(const Type& newItem)
 	newNode = new nodeType<Type>; //create the node
 	newNode->info = newItem; //store newItem in the node
 	newNode->link = NULL; //set the link field of the node
-						  //to NULL
+						 //to NULL
 	if (first == NULL) //Case 1
 	{
 		first = newNode;
@@ -73,5 +73,16 @@ void orderedLinkedList<Type>::insert(const Type& newItem)
 	}//end else
 }//end insert
 
+
+template <class Type>
+void orderedLinkedList<Type>::insertFirst(const Type& newItem)
+{
+	insert(newItem);
+}//end insertFirst
+template <class Type>
+void orderedLinkedList<Type>::insertLast(const Type& newItem)
+{
+	insert(newItem);
+}//end insertLast
 
 	
