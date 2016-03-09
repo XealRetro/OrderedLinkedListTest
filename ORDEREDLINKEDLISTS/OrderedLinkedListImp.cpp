@@ -27,4 +27,51 @@ bool orderedLinkedList<Type>::search(const Type& searchItem) const
 	return found;
 }
 
+template <class Type>
+void orderedLinkedList<Type>::insert(const Type& newItem)
+{
+	nodeType<Type> *current; //pointer to traverse the list
+	nodeType<Type> *trailCurrent; //pointer just before current
+	nodeType<Type> *newNode; //pointer to create a node
+	bool found;
+	newNode = new nodeType<Type>; //create the node
+	newNode->info = newItem; //store newItem in the node
+	newNode->link = NULL; //set the link field of the node
+						  //to NULL
+	if (first == NULL) //Case 1
+	{
+		first = newNode;
+		last = newNode;
+		count++;
+	}
+	else
+	{
+		current = first;
+		found = false;
+		while (current != NULL && !found) //search the list
+			if (current->info >= newItem)
+				found = true;
+			else
+			{
+				trailCurrent = current;
+				current = current->link;
+			}
+		if (current == first) //Case 2
+		{
+			newNode->link = first;
+			first = newNode;
+			count++;
+		}
+		else //Case 3
+		{
+			trailCurrent->link = newNode;
+			newNode->link = current;
+			if (current == NULL)
+				last = newNode;
+			count++;
+		}
+	}//end else
+}//end insert
+
+
 	
