@@ -12,18 +12,18 @@ bool orderedLinkedList<Type>::search(const Type& searchItem) const
 		{
 			found = true;
 		}
-			
+
 		else
 		{
 			current = current->link;
 		}
 	}
-			
+
 	if (found)
 	{
 		found = (current->info == searchItem); //test for equality
 	}
-		
+
 	return found;
 }
 
@@ -54,14 +54,14 @@ void orderedLinkedList<Type>::insert(const Type& newItem)
 			{
 				found = true;
 			}
-				
+
 			else
 			{
 				trailCurrent = current;
 				current = current->link;
 			}
 		}
-			
+
 		if (current == first) //Case 2
 		{
 			newNode->link = first;
@@ -76,12 +76,11 @@ void orderedLinkedList<Type>::insert(const Type& newItem)
 			{
 				last = newNode;
 			}
-				
+
 			count++;
 		}
 	}//end else
 }//end insert
-
 
 template <class Type>
 void orderedLinkedList<Type>::insertFirst(const Type& newItem)
@@ -104,7 +103,7 @@ void orderedLinkedList<Type>::deleteNode(const Type& deleteItem)
 	{
 		cout << "Cannot delete from an empty list." << endl;
 	}
-		
+
 	else
 	{
 		current = first;
@@ -115,51 +114,46 @@ void orderedLinkedList<Type>::deleteNode(const Type& deleteItem)
 			{
 				found = true;
 			}
-				
+
 			else
 			{
 				trailCurrent = current;
 				current = current->link;
 			}
 		}
-			
+
 		if (current == NULL) //Case 4
 		{
 			cout << "The item to be deleted is not in the list." << endl;
 		}
-			
+
 		else
 		{
 			if (current->info == deleteItem) //the item to deleted is in the list
 			{
 				{
-				if (first == current) //Case 2
-				{
-					first = first->link;
-					if (first == NULL)
-						last = NULL;
-					delete current;
+					if (first == current) //Case 2
+					{
+						first = first->link;
+						if (first == NULL)
+							last = NULL;
+						delete current;
+					}
+					else //Case 3
+					{
+						trailCurrent->link = current->link;
+						if (current == last)
+							last = trailCurrent;
+						delete current;
+					}
+					count--;
 				}
-				else //Case 3
-				{
-					trailCurrent->link = current->link;
-					if (current == last)
-						last = trailCurrent;
-					delete current;
-				}
-				count--;
 			}
-			}
-			
+
 			else //Case 4
 			{
 				cout << "The item to be deleted is not in the list." << endl;
 			}
 		}
-			
-				
 	}
 }//end deleteNode
-			
-
-	
