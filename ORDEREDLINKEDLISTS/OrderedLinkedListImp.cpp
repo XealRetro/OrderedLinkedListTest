@@ -48,6 +48,14 @@ void orderedLinkedList<Type>::insert(const Type& newItem)
 	{
 		current = first;
 		found = false;
+		while (current != NULL)
+		{
+			if (current->info == newItem)
+			{
+				cout << "This item is already in the list" << endl;
+				return;
+			}
+		}
 		while (current != NULL && !found) //search the list
 		{
 			if (current->info >= newItem)

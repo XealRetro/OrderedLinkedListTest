@@ -2,7 +2,9 @@
 #ifdef _MSC_VER
 #define _CRT_SECURE_NO_WARNINGS
 #endif
-
+#include <iostream>
+using std::cout;
+using std::endl;
 template <class Type>
 class orderedLinkedList:public linkedListType<Type>
 {
